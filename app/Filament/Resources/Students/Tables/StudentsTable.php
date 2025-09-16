@@ -15,10 +15,10 @@ class StudentsTable
         return $table
             ->columns([
                 TextColumn::make('first_name')
-                    ->label('Primer apellido')
+                    ->label('Nombre')
                     ->searchable(),
                 TextColumn::make('last_name')
-                    ->label('Segundo apellido')
+                    ->label('Apellidos')
                     ->searchable(),
                 TextColumn::make('nick_name')
                     ->label('Nickname')

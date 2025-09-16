@@ -12,10 +12,10 @@ class StudentForm
         return $schema
             ->components([
                 TextInput::make('first_name')
-                    ->label('Primer apellido')
+                    ->label('Nombre')
                     ->required(),
                 TextInput::make('last_name')
-                    ->label('Segundo apellido')
+                    ->label('Apellidos')
                     ->required(),
                 TextInput::make('nick_name')
                     ->label('Nickname')
