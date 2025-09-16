@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('milestone_id')->constrained()->cascadeOnDelete();
             $table->string('name');
+            $table->text('description')->nullable();
             $table->integer('order')->default(1);
             $table->timestamps();
         });

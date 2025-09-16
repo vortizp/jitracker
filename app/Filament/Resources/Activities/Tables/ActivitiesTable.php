@@ -18,21 +18,25 @@ class ActivitiesTable
                     ->label('Tema')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('name')
-                    ->label('Actividad')
-                    ->searchable(),
                 TextColumn::make('order')
                     ->label('Orden')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('created_at')
+                TextColumn::make('name')
+                    ->label('Actividad')
+                    ->searchable(),
+                TextColumn::make('description')
+                    ->label('Descripción')
+                    ->limit(50)
+                    ->toggleable(),
+                /*TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: true),*/
             ])
             ->filters([
                 \Filament\Tables\Filters\SelectFilter::make('milestone_id')

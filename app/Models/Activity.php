@@ -13,6 +13,7 @@ class Activity extends Model
         'milestone_id',
         'name',
         'order',
+        'description',
     ];
 
     protected static function booted()

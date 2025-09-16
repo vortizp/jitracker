@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Activities\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
 
 class ActivityForm
@@ -17,14 +18,18 @@ class ActivityForm
                      ->required()
                      ->relationship('milestone', 'name')
                      ->preload(),
-                TextInput::make('name')
-                    ->label('Actividad')
-                    ->required(),
                 TextInput::make('order')
                     ->label('Orden')
                     ->required()
                     ->numeric()
                     ->default(1),
+                TextInput::make('name')
+                    ->label('Actividad')
+                    ->required(),
+                Textarea::make('description')
+                    ->label('Descripción')
+                    ->nullable()
+                    ->columnSpan('full'),    
             ]);
     }
 }

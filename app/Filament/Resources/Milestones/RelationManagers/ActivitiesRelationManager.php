@@ -11,6 +11,7 @@ use Filament\Actions\DissociateAction;
 use Filament\Actions\DissociateBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
@@ -28,14 +29,18 @@ class ActivitiesRelationManager extends RelationManager
     {
         return $schema
             ->components([
-                TextInput::make('name')
-                    ->label('Actividad')
-                    ->required(),
                 TextInput::make('order')
                     ->label('Orden')
                     ->required()
                     ->numeric()
                     ->default(1),
+                TextInput::make('name')
+                    ->label('Actividad')
+                    ->required(),
+                Textarea::make('description')
+                    ->label('Descripción')
+                    ->nullable()
+                    ->columnSpan('full'),          
             ]);
     }
 
@@ -44,21 +49,25 @@ class ActivitiesRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('Actividades')
             ->columns([
-                TextColumn::make('name')
-                    ->label('Actividad')
-                    ->searchable(),
                 TextColumn::make('order')
                     ->label('Orden')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('created_at')
+                TextColumn::make('name')
+                    ->label('Actividad')
+                    ->searchable(),
+                TextColumn::make('description')
+                    ->label('Descripción')
+                    ->limit(50)
+                    ->toggleable(),
+                /*TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: true),*/
             ])
             ->filters([
                 //
